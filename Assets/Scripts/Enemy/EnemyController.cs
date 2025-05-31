@@ -23,14 +23,22 @@ public class EnemyController : MonoBehaviour
     [Header("Graphics")]
     [SerializeField] SpriteRenderer graphicsObject;
 
+
+    [SerializeField] Rigidbody2D rb;
+
     // TODO: Modificare lo script in modo che si usi il RigidBody2D per il movimento invece che transform.position
+
+   private void Awake()
+   {
+    rb=GetComponent<Rigidbody2D>();
+   }
 
     private void Start()
     {
         currentHealth = maxHealth;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         FollowPath();
     }
@@ -41,8 +49,8 @@ public class EnemyController : MonoBehaviour
 
         Vector3 targetPoint = pathPoints[currentPointIndex].position;
         Vector3 direction = (targetPoint - transform.position).normalized;
-
-        transform.position += direction * speed * Time.deltaTime;
+        
+        transform.position+=direction* speed*Time.deltaTime;
 
         UpdateGraphicsRotation(direction);
 

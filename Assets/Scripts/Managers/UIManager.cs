@@ -5,9 +5,25 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+
+    private RaycastTarget target;
     [Header("Turret Buttons")]
     public List<TurretButton> turretButtons;
     [SerializeField] TextMeshProUGUI playerCoins;
+
+    [Header("Stats")]
+
+    private  TurretStatsSO turretStatsSO;
+
+    [SerializeField] TextMeshProUGUI damageText;
+
+    [SerializeField] TextMeshProUGUI costText;
+
+    [SerializeField] TextMeshProUGUI fireRateText;
+
+    [SerializeField] TextMeshProUGUI upgradeText;
+
+    [SerializeField] GameObject statsPanel;
 
     private void Start()
     {
@@ -36,4 +52,6 @@ public class UIManager : MonoBehaviour
             button.UpdateButtonState(playerCoins);
         }
     }
+
+    
 }
